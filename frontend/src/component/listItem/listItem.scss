@@ -1,0 +1,92 @@
+.listItem {
+    width: 230px;
+    height: 120px;
+    background-color: var(--main-color);
+    margin-right: 5px;
+    color: white;
+    cursor: pointer;
+    position: relative;
+
+    .wrapper {
+        overflow: hidden;
+        background-color: var(--main-color);
+        height: 100%;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .itemInfo {
+            display: none;
+        }
+
+    }
+
+    &:hover {
+        .itemInfo{
+            display: block;
+            padding: 4px;
+            font-size: 14px;
+            .icons{
+                margin-bottom: 8px;
+                display: flex;
+                .icon{
+                    border: 2px solid white;
+                    padding: 5px;
+                    border-radius: 50%;
+                    margin-right: 10px;
+                    font-size: 16px;
+                }
+            }
+
+            .itemInfoTop{
+                color: gray;
+                margin-bottom: 8px;
+                font-weight: 400;
+
+                .limit{
+                    border: 1px solid red;
+                    border-radius: 4px;
+                    padding: 1px 4px;
+                    margin: 0 10px;
+                }
+            }
+            .desc{
+                height: 60px;
+                line-height: 20px;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin-bottom: 8px;
+            }
+            
+        }
+        .wrapper {
+            width: 325px;
+            height: 300px;
+            position: absolute;
+            top: -150px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+            left: -50px;
+            z-index: 1;
+            border-radius: 5px;
+            img {
+                height: 140px;
+            }
+            
+            video{
+                width: 100%;
+                height: 140px;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            
+        }
+
+    }
+
+}
