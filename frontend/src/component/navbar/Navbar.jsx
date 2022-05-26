@@ -7,11 +7,12 @@ import { logout } from '../../context/authContext/AuthAction';
 import axios from 'axios'
 import ListSearch from '../listSearch/ListSearch';
 const Navbar = () => {
+  const {user} = useContext(AuthContext)
   const [isScroll, setIsScroll] = useState(false);
   const { dispatch } = useContext(AuthContext);
   const [input, setInput] = useState('')
   const inputRef = useRef();
-  const [clicked, setClicked] = useState(false)
+  const [clicked, setClicked] = useState(false);
   window.onscroll = () => {
     setIsScroll(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
@@ -61,10 +62,11 @@ const Navbar = () => {
 
           <span>KID</span>
           <Notifications className='icon' />
-          <img className='avatar' src="https://i.pinimg.com/550x/2d/39/c7/2d39c7b2287252c50372d21de96b1813.jpg" alt="" />
+          <img className='avatar' src={user.profilePic} alt="" />
           <div className="profile">
             <ArrowDropDown className='icon' />
             <div className="option">
+              <span className='username'>{user.username}</span>
               <span className="setting">Setting</span>
               <span className="logout" onClick={() => dispatch(logout())}>Logout</span>
             </div>

@@ -7,9 +7,10 @@ const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const movieRoute = require("./routes/movies");
 const listRoute = require("./routes/lists");
+const commentRoute = require("./routes/comments");
 
 dotenv.config();
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3001
 mongoose.connect(process.env.MONGO_URL)
     .then(() => console.log("DB Connection Successfull"))
     .catch((err) => console.log("Error: ", err));
@@ -19,6 +20,7 @@ mongoose.connect(process.env.MONGO_URL)
     app.use("/api/users", userRoute);
     app.use("/api/movies", movieRoute);
     app.use("/api/lists", listRoute);
+    app.use("/api/comments", commentRoute);
 app.listen(PORT, () => {
     console.log("Server is running!");
 });

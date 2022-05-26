@@ -1,0 +1,16 @@
+.comment {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    div{
+        margin-left: 10px;
+        p{
+            margin: 0;
+        }
+        .commentContent{
+            color: gray;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+    }
+}
