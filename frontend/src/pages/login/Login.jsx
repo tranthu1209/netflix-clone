@@ -22,7 +22,7 @@ const Login = () => {
             <div className="container">
                 <form action="">
                     <h2>Sign In</h2>
-                    <input type="email" placeholder='Enter your email adress' onChange={e=> setEmail(e.target.value)} />
+                    <input type="email" placeholder='Enter your email adress' onChange={e=> setEmail(e.target.value)} autoFocus/>
                     <input type="password" placeholder="Enter your password" onChange={e=> setPassword(e.target.value)}/>
                     <button className='loginButton' onClick={handleLogin}>Sign In</button>
                     <span>New to Netflix?

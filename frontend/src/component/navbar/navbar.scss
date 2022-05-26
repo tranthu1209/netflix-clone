@@ -1,4 +1,5 @@
 @import '../../app.scss';
+
 .navbar {
     color: white;
     font-size: 14px;
@@ -29,25 +30,26 @@
                 height: 25px;
                 margin-right: 40px;
 
-                @include mobile{
+                @include mobile {
                     display: none;
                 }
             }
 
             span {
                 padding: 0 14px;
-                @include tablet{
+
+                @include tablet {
                     display: none;
                 }
 
-                &.navbarLink{
-                    @include tablet{
+                &.navbarLink {
+                    @include tablet {
                         display: block;
                     }
                 }
             }
-            
-            
+
+
 
         }
 
@@ -55,7 +57,7 @@
             display: flex;
             align-items: center;
 
-            img {
+            .avatar {
                 width: 30px;
                 height: 30px;
                 border-radius: 50%;
@@ -65,12 +67,46 @@
 
             .icon {
                 margin: 0 14px;
+                position: relative;
+            }
+
+            .search {
+                position: relative;
+                
+
+                .searchContainer {
+                    position: absolute;
+                    top: 0;
+                    right: 14px;
+                    width: 400px;
+                    border-radius: 3px;
+                    animation: slideLeft linear 0.5s;
+                    .searchBar {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        background-color: var(--main-color);
+                        padding: 5px;
+
+                        input {
+                            flex: 1;
+                            background-color: transparent;
+                            padding: 5px;
+                            border-radius: 2px;
+                            border: 1px solid rgba(255, 255, 255, 0.74);
+                            color: white;
+                        }
+                    }
+
+                }
+                
             }
 
             .profile {
                 .option {
                     display: none;
                     background-color: var(--main-color);
+                    animation: slideDown 0.7s linear;
                 }
 
                 span {

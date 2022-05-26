@@ -44,7 +44,7 @@ export default function Register() {
         </p>
         {!email ? (
           <div className="input">
-            <input type="email" placeholder="email address" ref={emailRef} />
+            <input type="email" placeholder="email address" ref={emailRef} autoFocus />
             <button className="registerButton" onClick={handleStart}>
               Get Started
             </button>
