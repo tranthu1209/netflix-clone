@@ -14,7 +14,7 @@ const Watch = () => {
   useEffect(() => {
     const getComments = async () => {
       try {
-        const res = await axios.get(`http://localhost:3001/api/comments?movieId=${movie._id}`);
+        const res = await axios.get(`https://netflix-server1209.herokuapp.com/api/comments?movieId=${movie._id}`);
         setComments(res.data);
       } catch (err) {
         console.error(err);
@@ -32,7 +32,7 @@ const Watch = () => {
       const userId = user._id;
       const content = inputRef.current.value;
       try {
-        const res = await axios.post('http://localhost:3001/api/comments/', { movieId, userId, content });
+        const res = await axios.post('https://netflix-server1209.herokuapp.com/api/comments/', { movieId, userId, content });
         console.log(res.data);
         setComments(prev => [...prev, res.data]);
         inputRef.current.value = '';

@@ -7,7 +7,7 @@ const Comment = ({comment}) => {
     useEffect(()=>{
         const getUser = async()=>{
             try{
-                const res = await axios.get(`http://localhost:3001/api/users/find/${comment.userId}`);
+                const res = await axios.get(`https://netflix-server1209.herokuapp.com/api/users/find/${comment.userId}`);
                 setUser(res.data);
             }catch(err){
                 console.error(err);

@@ -76,29 +76,9 @@
 
 
                 .searchContainer {
-                    position: absolute;
-                    top: 0;
-                    right: 14px;
-                    width: 400px;
-                    border-radius: 3px;
-                    animation: slideLeft linear 0.5s;
+                   
 
-                    .searchBar {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        background-color: var(--main-color);
-                        padding: 5px;
-
-                        input {
-                            flex: 1;
-                            background-color: transparent;
-                            padding: 5px;
-                            border-radius: 2px;
-                            border: 1px solid rgba(255, 255, 255, 0.74);
-                            color: white;
-                        }
-                    }
+                    
 
                 }
 

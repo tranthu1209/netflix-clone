@@ -4,15 +4,15 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { Link } from "react-router-dom";
 import { AuthContext } from '../../context/authContext/AuthContext';
 import { logout } from '../../context/authContext/AuthAction';
-import axios from 'axios'
-import ListSearch from '../listSearch/ListSearch';
+import SearchBox from '../listSearch/SearchBox';
 const Navbar = () => {
   const { user } = useContext(AuthContext)
   const [isScroll, setIsScroll] = useState(false);
   const { dispatch } = useContext(AuthContext);
-  const [input, setInput] = useState('')
-  const inputRef = useRef();
+  
   const [clicked, setClicked] = useState(false);
+ 
+  const wrapperRef = useRef();
   window.onscroll = () => {
     setIsScroll(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
@@ -21,11 +21,15 @@ const Navbar = () => {
     setClicked(true);
 
   }
+
   return (
     <div className={isScroll ? 'navbar scrolled' : 'navbar'}>
       <div className="container">
         <div className="left">
-          <img className='logon' src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/799px-Netflix_2015_logo.svg.png" alt="" />
+          <Link to='/' className='link'>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/799px-Netflix_2015_logo.svg.png" alt="" />
+          </Link>
+          
           <Link to="/" className='link'>
             <span>Home</span>
           </Link>
@@ -40,20 +44,11 @@ const Navbar = () => {
           <span>TV</span>
         </div>
         <div className="right">
-          <div className='search'>
+          <div className='search' ref={wrapperRef}>
             <Search className='icon' onClick={handleSearch} />
             {
               clicked && (
-                <div className='searchContainer'>
-                  <div className='searchBar'>
-                    <input type="text" name='input' placeholder='Enter movie name ...' ref={inputRef} autoFocus
-                      onChange={e => setInput(e.target.value)}
-                      onBlur={() => { setClicked(false) }}
-                    />
-                    <Search className='icon' />
-                  </div>
-                  <ListSearch input={input} />
-                </div>
+                <SearchBox wrapperRef={wrapperRef} setClicked={setClicked}/>
               )
             }
 
