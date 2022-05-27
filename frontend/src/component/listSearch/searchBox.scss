@@ -1,3 +1,4 @@
+@import '../../app.scss';
 .searchBox{
     position: absolute;
     top: 0;
@@ -5,6 +6,10 @@
     width: 400px;
     border-radius: 3px;
     animation: slideLeft linear 0.5s;
+    @include mobile{
+        position: fixed;
+        width: 90vw;
+    }
     .searchBar {
         display: flex;
         justify-content: space-between;
