@@ -12,6 +12,7 @@ import {
   Navigate
 } from "react-router-dom";
 import {AuthContext} from './context/authContext/AuthContext'
+import Account from './pages/account/Account'
 const App = () => {
   const {user} = useContext(AuthContext)
   return (
@@ -36,6 +37,7 @@ const App = () => {
               <Route path="/movies" element={<Home type="movie" />} />
               <Route path="/series" element={<Home type="series" />} />
               <Route path="/watch" element={<Watch />} />
+              <Route path="/account" element={<Account />} />
             </>
           )
         }

@@ -1,5 +1,5 @@
 import './navbar.scss';
-import { ArrowDropDown, Notifications, Search } from '@material-ui/icons'
+import { AccountCircleOutlined, ArrowDropDown, Notifications, PowerSettingsNewOutlined, Search } from '@material-ui/icons'
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Link } from "react-router-dom";
 import { AuthContext } from '../../context/authContext/AuthContext';
@@ -7,7 +7,7 @@ import { logout } from '../../context/authContext/AuthAction';
 import axios from 'axios'
 import ListSearch from '../listSearch/ListSearch';
 const Navbar = () => {
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const [isScroll, setIsScroll] = useState(false);
   const { dispatch } = useContext(AuthContext);
   const [input, setInput] = useState('')
@@ -48,7 +48,7 @@ const Navbar = () => {
                   <div className='searchBar'>
                     <input type="text" name='input' placeholder='Enter movie name ...' ref={inputRef} autoFocus
                       onChange={e => setInput(e.target.value)}
-                      onBlur={() => {setClicked(false)}}
+                      onBlur={() => { setClicked(false) }}
                     />
                     <Search className='icon' />
                   </div>
@@ -66,9 +66,21 @@ const Navbar = () => {
           <div className="profile">
             <ArrowDropDown className='icon' />
             <div className="option">
-              <span className='username'>{user.username}</span>
-              <span className="setting">Setting</span>
-              <span className="logout" onClick={() => dispatch(logout())}>Logout</span>
+              <p className='username'>{user.username}</p>
+
+              <Link to="/account" className='link'>
+                <p>
+                  <AccountCircleOutlined />
+                  <span className="setting">Account and Setting</span>
+                </p>
+              </Link>
+
+
+              <p className="logout" onClick={() => dispatch(logout())}>
+                <PowerSettingsNewOutlined />
+                <span >Logout</span>
+              </p>
+
             </div>
           </div>
         </div>

@@ -73,7 +73,7 @@
 
             .search {
                 position: relative;
-                
+
 
                 .searchContainer {
                     position: absolute;
@@ -82,6 +82,7 @@
                     width: 400px;
                     border-radius: 3px;
                     animation: slideLeft linear 0.5s;
+
                     .searchBar {
                         display: flex;
                         justify-content: space-between;
@@ -100,26 +101,52 @@
                     }
 
                 }
-                
+
             }
 
             .profile {
+                position: relative;
+
                 .option {
                     display: none;
                     background-color: var(--main-color);
-                    animation: slideDown 0.7s linear;
+                    flex-direction: column;
+                    position: absolute;
+                    top: calc(100% + 4px);
+                    right: 5px;
+                    width: 200px;
+                    cursor: pointer;
+                    animation: slideDown 0.5s linear;
+
+                    p {
+                        padding: 10px 14px;
+                        margin: 0;
+                        display: flex;
+                        align-items: center;
+
+                        span {
+                            margin-left: 5px;
+                        }
+                        &.username {
+                            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                        }
+                    }
+
+                }
+                &::after{
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 5px;
+                    top: calc(100%);
+                    right: 0;
                 }
 
-                span {
-                    padding: 6px 14px;
-                }
+
 
                 &:hover {
                     .option {
                         display: flex;
-                        flex-direction: column;
-                        position: absolute;
-                        cursor: pointer;
                     }
                 }
             }
