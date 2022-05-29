@@ -1,17 +1,16 @@
 import './navbar.scss';
 import { AccountCircleOutlined, ArrowDropDown, Notifications, PowerSettingsNewOutlined, Search } from '@material-ui/icons'
 import { useContext, useEffect, useRef, useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from '../../context/authContext/AuthContext';
 import { logout } from '../../context/authContext/AuthAction';
 import SearchBox from '../listSearch/SearchBox';
 const Navbar = () => {
+  const navigate = useNavigate()
   const { user } = useContext(AuthContext)
   const [isScroll, setIsScroll] = useState(false);
   const { dispatch } = useContext(AuthContext);
-  
   const [clicked, setClicked] = useState(false);
- 
   const wrapperRef = useRef();
   window.onscroll = () => {
     setIsScroll(window.pageYOffset === 0 ? false : true);
@@ -27,9 +26,9 @@ const Navbar = () => {
       <div className="container">
         <div className="left">
           <Link to='/' className='link'>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/799px-Netflix_2015_logo.svg.png" alt="" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/799px-Netflix_2015_logo.svg.png" alt="" />
           </Link>
-          
+
           <Link to="/" className='link'>
             <span>Home</span>
           </Link>
@@ -48,7 +47,7 @@ const Navbar = () => {
             <Search className='icon' onClick={handleSearch} />
             {
               clicked && (
-                <SearchBox wrapperRef={wrapperRef} setClicked={setClicked}/>
+                <SearchBox wrapperRef={wrapperRef} setClicked={setClicked} />
               )
             }
 
@@ -71,7 +70,11 @@ const Navbar = () => {
               </Link>
 
 
-              <p className="logout" onClick={() => dispatch(logout())}>
+              <p className="logout"
+                onClick={() => {
+                  dispatch(logout());
+                  navigate('/');
+                }}>
                 <PowerSettingsNewOutlined />
                 <span >Logout</span>
               </p>

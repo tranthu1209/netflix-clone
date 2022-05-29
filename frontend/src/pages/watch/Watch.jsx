@@ -3,9 +3,9 @@ import { ArrowBack, Send } from '@material-ui/icons'
 import { Link, useLocation } from 'react-router-dom'
 import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../../context/authContext/AuthContext';
-import axios from 'axios'
+import axios from '../../api/axios';
 import Comment from '../../component/comment/Comment';
-import Footer from '../../component/footer/Footer';
+
 const Watch = () => {
   const location = useLocation();
   const movie = location.state.movie;
@@ -15,7 +15,7 @@ const Watch = () => {
   useEffect(() => {
     const getComments = async () => {
       try {
-        const res = await axios.get(`/api/comments?movieId=${movie._id}`);
+        const res = await axios.get(`/comments?movieId=${movie._id}`);
         setComments(res.data);
       } catch (err) {
         console.error(err);
@@ -33,7 +33,7 @@ const Watch = () => {
       const userId = user._id;
       const content = inputRef.current.value;
       try {
-        const res = await axios.post('/api/comments/', { movieId, userId, content });
+        const res = await axios.post('/comments/', { movieId, userId, content });
         console.log(res.data);
         setComments(prev => [...prev, res.data]);
         inputRef.current.value = '';

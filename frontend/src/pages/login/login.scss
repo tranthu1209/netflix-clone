@@ -32,7 +32,6 @@
 
         form {
             width: 300px;
-            height: 300px;
             padding: 30px;
             border-radius: 5px;
             background-color: var(--main-color);
@@ -46,15 +45,13 @@
                 padding-left: 10px;
                 background-color: gray;
                 color: white;
+                margin-bottom: 10px;
                 &::placeholder{
                     color: white;
                 }
 
             }
-            .errorMessage{
-                color: red;
-                font-size: 12px;
-            }
+           
             button{
                 height: 40px;
                 border-radius: 5px;
@@ -62,8 +59,28 @@
                 color: white;
                 font-size: 18px;
                 font-weight: 500;
-                cursor: pointer;
+                margin-top: 10px;
+                &.disabled{
+                    opacity: 0.7;
+                    cursor: not-allowed;
+                }
 
+            }
+            .errorBox{
+                display: none;
+                .errorMessage{
+                    color: white;
+                    font-size: 14px;
+                    margin: 0;
+                }
+                &.show{
+                    display: flex;
+                    align-items: center;
+                    background-color: #e87c03;
+                    border-radius: 3px;
+                    padding: 5px 10px;
+                    margin-bottom: 10px;
+                }
             }
             span{
                 margin-top: 10px;

@@ -1,18 +1,17 @@
 import './listItem.scss'
 import { Add, PlayArrow, ThumbDownOutlined, ThumbUpOutlined } from '@material-ui/icons'
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../api/axios';
 import { Link } from "react-router-dom"
 
 const ListItem = ({ item}) => {
   const [isHovered, setIsHovered] = useState(false);
   
   const [movie, setMovie] = useState({});
-  const movieApi = "/api/movies/"
   useEffect(() => {
     const getMovie = async () => {
       try {
-        const res = await axios.get(`${movieApi}find/${item}`);
+        const res = await axios.get(`/movies/find/${item}`);
         setMovie(res.data);
       } catch (err) {
         console.error(err)
@@ -31,7 +30,7 @@ const ListItem = ({ item}) => {
           onMouseLeave={() => setIsHovered(false)}
         >
 
-          <img src={movie?.img} alt="" />
+          <img src={movie?.img} alt={movie.title} />
           {
             isHovered && (
               <>

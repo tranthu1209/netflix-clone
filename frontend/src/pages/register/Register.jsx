@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../api/axios";
 import { useRef } from "react";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
@@ -21,7 +21,7 @@ export default function Register() {
   const handleFinish = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/api/auth/register", { email,username, password });
+      await axios.post("/auth/register", { email,username, password });
       navigate("/login");
     } catch (err) {}
   };

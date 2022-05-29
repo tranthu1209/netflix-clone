@@ -1,0 +1,35 @@
+.footer {
+    width: 100%;
+    height: 150px;
+    box-sizing: border-box;
+    color: gray;
+    padding: 30px 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    font-weight: 300;
+    position: absolute;
+    bottom: 0;
+    .wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+
+        p {
+            font-size: 16px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+
+            .groupNav {
+                display: flex;
+                flex-direction: column;
+
+                span {
+                    line-height: 20px;
+                }
+            }
+        }
+    }
+
+}

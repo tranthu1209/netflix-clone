@@ -1,5 +1,129 @@
-.account{
+@import '../../app.scss';
+
+.account {
     color: white;
     max-width: 1200px;
     margin: 100px auto 0;
+    padding: 10px;
+
+    ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        border-bottom: 1px solid gray;
+
+        li {
+            padding: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            min-width: fit-content;
+            &.active {
+                border-bottom: 4px solid red;
+            }
+        }
+        @include mobile{
+            overflow-x: scroll;
+        }
+    }
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 40px;
+
+        h3 {
+            margin-right: 60px;
+            order: 2;
+        }
+
+        div {
+            flex: 1;
+
+            .group {
+                padding-bottom: 20px;
+                display: flex;
+
+                label {
+                    width: 120px;
+
+                }
+
+                input {
+                    flex: 1;
+                    height: 25px;
+                    border: none;
+                    padding: 5px;
+                }
+            }
+            @include mobile{
+                order: 3;
+            }
+        }
+
+        .profilePic {
+            max-width: 150px;
+            height: 150px;
+            margin-left: 60px;
+            position: relative;
+            cursor: pointer;
+
+            img {
+                width: 150px;
+                height: 150px;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+
+            .icon {
+                position: absolute;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.4);
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            input[type='file'] {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                cursor: pointer;
+                color: transparent;
+
+                &:hover {
+                    color: transparent;
+                }
+
+                &::-webkit-file-upload-button {
+                    visibility: hidden;
+                }
+            }
+            @include mobile{
+                margin: 0 auto;
+                order: 1;
+            }
+
+        }
+
+        button {
+            padding: 10px 20px;
+            color: white;
+            background-color: red;
+            height: fit-content;
+            align-self: center;
+            margin-left: 40px;
+            @include mobile{
+                margin: 20px auto;
+                order: 4;
+            }
+        }
+        @include mobile{
+            flex-direction: column;
+        }
+
+    }
 }

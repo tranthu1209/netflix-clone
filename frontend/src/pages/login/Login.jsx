@@ -8,9 +8,13 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { dispatch, error, isFetching } = useContext(AuthContext);
-    const handleLogin = (e) => {
+    const [err, setErr] = useState('');
+    
+    const handleLogin = async(e) => {
         e.preventDefault();
-        login({email, password}, dispatch);
+        login({email, password}, dispatch); 
+        setEmail('');
+        setPassword('');
     }
     return (
         <div className='login'>
@@ -23,10 +27,14 @@ const Login = () => {
             <div className="container">
                 <form action="">
                     <h2>Sign In</h2>
+                    <div className={`errorBox ${error? 'show' : ''}`}>
+                        <span className='errorMessage'>{error?.response?.data}</span>
+                    </div>
+                    
                     <input type="email" placeholder='Enter your email adress' value={email} onChange={e => setEmail(e.target.value)} autoFocus />
                     <input type="password" placeholder="Enter your password" value={password} onChange={e => setPassword(e.target.value)} />
-                    <span className='errorMessage'>{error}</span>
-                    <button className='loginButton' onClick={handleLogin} disabled={isFetching}>Sign In</button>
+                    
+                    <button className={`loginButton ' ${isFetching? 'disabled' : ''}`} onClick={handleLogin} disabled={isFetching}>Sign In</button>
                     <span>New to Netflix?
                         <Link to="/register" className='link registerLink'> Sign up now</Link>
                     </span>

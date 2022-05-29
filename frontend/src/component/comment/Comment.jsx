@@ -1,5 +1,5 @@
 import './comment.scss'
-import axios from 'axios';
+import axios from '../../api/axios';
 import { memo, useEffect, useState } from 'react'
 
 const Comment = ({comment}) => {
@@ -7,7 +7,7 @@ const Comment = ({comment}) => {
     useEffect(()=>{
         const getUser = async()=>{
             try{
-                const res = await axios.get(`/api/users/find/${comment.userId}`);
+                const res = await axios.get(`/users/find/${comment.userId}`);
                 setUser(res.data);
             }catch(err){
                 console.error(err);

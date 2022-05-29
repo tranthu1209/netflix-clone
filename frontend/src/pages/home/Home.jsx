@@ -5,20 +5,18 @@ import Featured from '../../component/featured/Featured';
 import List from '../../component/list/List';
 import { useEffect, useState } from 'react';
 
-import axios from 'axios';
-import Footer from '../../component/footer/Footer';
+import axios from '../../api/axios';
+
 
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
   const [genre, setGenre] = useState(null);
 
-  const listApi = "/api/lists/";
-
   useEffect(() => {
     const getRandomList = async () => {
       try {
         const res = await axios.get(
-          `${listApi}${type ? "?type=" + type : ""}${type && genre ? "&genre=" + genre : ""}`, {
+          `/lists/${type ? "?type=" + type : ""}${type && genre ? "&genre=" + genre : ""}`, {
             headers: {token: 'Bearer '+ JSON.parse(localStorage.user).accessToken}
           }
         );

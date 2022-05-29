@@ -1,5 +1,5 @@
 import './searchBox.scss'
-import axios from 'axios';
+import axios from '../../api/axios';
 import React, {useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { Search } from '@material-ui/icons';
@@ -11,7 +11,7 @@ const SearchBox = ({ wrapperRef, setClicked }) => {
     useEffect(() => {
         const getMovies = async () => {
             try {
-                const res = await axios.get('/api/movies');
+                const res = await axios.get('/movies');
                 const filterData = res.data.filter(item => item.title.toLowerCase().includes(input));
                 console.log(filterData)
                 setMovies(filterData);
