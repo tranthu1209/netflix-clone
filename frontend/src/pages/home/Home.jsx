@@ -6,18 +6,21 @@ import List from '../../component/list/List';
 import { useEffect, useState } from 'react';
 
 import axios from 'axios';
+import Footer from '../../component/footer/Footer';
 
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
   const [genre, setGenre] = useState(null);
 
-  const listApi = "https://netflix-server1209.herokuapp.com/api/lists/";
+  const listApi = "/api/lists/";
 
   useEffect(() => {
     const getRandomList = async () => {
       try {
         const res = await axios.get(
-          `${listApi}${type ? "?type=" + type : ""}${type && genre ? "&genre=" + genre : ""}`
+          `${listApi}${type ? "?type=" + type : ""}${type && genre ? "&genre=" + genre : ""}`, {
+            headers: {token: 'Bearer '+ JSON.parse(localStorage.user).accessToken}
+          }
         );
         console.log(res.data)
         setLists(res.data)

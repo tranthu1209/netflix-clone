@@ -13,13 +13,15 @@ import {
 } from "react-router-dom";
 import {AuthContext} from './context/authContext/AuthContext'
 import Account from './pages/account/Account'
+import Footer from './component/footer/Footer'
 const App = () => {
   const {user} = useContext(AuthContext)
   return (
-    <Router>
+    <>
+     <Router>
       <Routes>
         <Route exact path="/" element={
-          user ? <Home /> : <Navigate to="/register" />
+          user ? <Home /> : <Navigate to="/login" />
 
         }>
         </Route>
@@ -44,6 +46,10 @@ const App = () => {
 
       </Routes>
     </Router>
+    <Footer/>
+    </>
+   
+    
   )
 }
 

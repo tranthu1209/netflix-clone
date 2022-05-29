@@ -11,7 +11,7 @@ const SearchBox = ({ wrapperRef, setClicked }) => {
     useEffect(() => {
         const getMovies = async () => {
             try {
-                const res = await axios.get('https://netflix-server1209.herokuapp.com/api/movies');
+                const res = await axios.get('/api/movies');
                 const filterData = res.data.filter(item => item.title.toLowerCase().includes(input));
                 console.log(filterData)
                 setMovies(filterData);

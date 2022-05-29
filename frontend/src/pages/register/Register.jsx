@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRef } from "react";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import Footer from "../../component/footer/Footer";
 import "./register.scss";
 
 export default function Register() {
@@ -20,7 +21,7 @@ export default function Register() {
   const handleFinish = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://netflix-server1209.herokuapp.com/api/auth/register", { email,username, password });
+      await axios.post("/api/auth/register", { email,username, password });
       navigate("/login");
     } catch (err) {}
   };

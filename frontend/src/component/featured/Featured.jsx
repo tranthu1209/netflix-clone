@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './featured.scss'
 
 const Feature = ({ type, setGenre }) => {
-  const movieApi = "https://netflix-server1209.herokuapp.com/api/movies/"
+  const movieApi = "/api/movies/"
   const [content, setContent] = useState({});
   useEffect(() => {
     const getRandomContent = async () => {

@@ -8,7 +8,7 @@ const ListItem = ({ item}) => {
   const [isHovered, setIsHovered] = useState(false);
   
   const [movie, setMovie] = useState({});
-  const movieApi = "https://netflix-server1209.herokuapp.com/api/movies/"
+  const movieApi = "/api/movies/"
   useEffect(() => {
     const getMovie = async () => {
       try {

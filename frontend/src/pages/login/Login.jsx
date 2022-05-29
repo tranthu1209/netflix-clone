@@ -1,15 +1,16 @@
 import { useContext, useState } from 'react'
 import './login.scss'
-import {AuthContext} from '../../context/authContext/AuthContext';
-import {login} from '../../context/authContext/apiCalls'
+import { AuthContext } from '../../context/authContext/AuthContext';
+import { login } from '../../context/authContext/apiCalls'
 import { Link } from 'react-router-dom';
+
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const {dispatch} = useContext(AuthContext);
-    const handleLogin = (e)=>{
+    const { dispatch, error, isFetching } = useContext(AuthContext);
+    const handleLogin = (e) => {
         e.preventDefault();
-        login({email, password}, dispatch)
+        login({email, password}, dispatch);
     }
     return (
         <div className='login'>
@@ -22,9 +23,10 @@ const Login = () => {
             <div className="container">
                 <form action="">
                     <h2>Sign In</h2>
-                    <input type="email" placeholder='Enter your email adress' onChange={e=> setEmail(e.target.value)} autoFocus/>
-                    <input type="password" placeholder="Enter your password" onChange={e=> setPassword(e.target.value)}/>
-                    <button className='loginButton' onClick={handleLogin}>Sign In</button>
+                    <input type="email" placeholder='Enter your email adress' value={email} onChange={e => setEmail(e.target.value)} autoFocus />
+                    <input type="password" placeholder="Enter your password" value={password} onChange={e => setPassword(e.target.value)} />
+                    <span className='errorMessage'>{error}</span>
+                    <button className='loginButton' onClick={handleLogin} disabled={isFetching}>Sign In</button>
                     <span>New to Netflix?
                         <Link to="/register" className='link registerLink'> Sign up now</Link>
                     </span>
@@ -36,7 +38,6 @@ const Login = () => {
 
 
             </div>
-
         </div>
     )
 }

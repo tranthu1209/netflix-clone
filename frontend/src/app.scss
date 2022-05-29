@@ -7,7 +7,9 @@ body {
   margin: 0;
   background-color: var(--main-color);
 }
-
+#root{
+  position: relative;
+}
 .link {
   text-decoration: none;
   color: inherit;
