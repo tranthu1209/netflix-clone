@@ -53,6 +53,22 @@
         p{
             font-size: 20px;
         }
+        .errorBox{
+            display: none;
+            .errorMessage{
+                color: white;
+                font-size: 14px;
+                margin: 0;
+            }
+            &.show{
+                display: flex;
+                align-items: center;
+                background-color: #e87c03;
+                border-radius: 3px;
+                padding: 5px 10px;
+                margin-bottom: 10px;
+            }
+        }
         .input{
             width: 50vw;
             height: 50px;
@@ -81,6 +97,11 @@
                 border: none;
                 height: 100%;
                 font-size: 18px;
+
+                &.disabled{
+                    opacity: 0.7;
+                    cursor: not-allowed;
+                }
 
             }
 

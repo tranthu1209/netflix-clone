@@ -9,10 +9,12 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [isFetching, setIsFectching] = useState(false);
+  const [error, setError] = useState('')
   const navigate = useNavigate();
 
   const emailRef = useRef();
-  
+
 
   const handleStart = () => {
     setEmail(emailRef.current.value);
@@ -21,10 +23,16 @@ export default function Register() {
   const handleFinish = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/auth/register", { email,username, password });
+      setIsFectching(true);
+      await axios.post("/auth/register", { email, username, password })
+      setIsFectching(false);
       navigate("/login");
-    } catch (err) {}
+    } catch (err) {
+      setError('Email already exists');
+      setIsFectching(false)
+    }
   };
+  console.log(isFetching, error)
   return (
     <div className="register">
       <div className="top">
@@ -43,6 +51,9 @@ export default function Register() {
         <p>
           Ready to watch? Enter your email to create or restart your membership.
         </p>
+        <div className={`errorBox ${error ? 'show' : ''}`}>
+          <span className='errorMessage'>{error}</span>
+        </div>
         {!email ? (
           <div className="input">
             <input type="email" placeholder="email address" ref={emailRef} autoFocus />
@@ -52,9 +63,12 @@ export default function Register() {
           </div>
         ) : (
           <form className="input">
-            <input type="text" placeholder="username" onChange={e=>setUsername(e.target.value)} />
-            <input type="password" placeholder="password" onChange={e=>setPassword(e.target.value)} />
-            <button className="registerButton" onClick={handleFinish}>
+            <input type="text" placeholder="username" onChange={e => setUsername(e.target.value)} />
+            <input type="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
+            <button className={`registerButton ${isFetching ? 'disabled' : ''}`}
+              disabled={isFetching}
+              onClick={handleFinish}
+            >
               Start
             </button>
           </form>

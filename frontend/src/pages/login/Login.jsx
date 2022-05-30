@@ -34,7 +34,7 @@ const Login = () => {
                     <input type="email" placeholder='Enter your email adress' value={email} onChange={e => setEmail(e.target.value)} autoFocus />
                     <input type="password" placeholder="Enter your password" value={password} onChange={e => setPassword(e.target.value)} />
                     
-                    <button className={`loginButton ' ${isFetching? 'disabled' : ''}`} onClick={handleLogin} disabled={isFetching}>Sign In</button>
+                    <button className={`loginButton ${isFetching? 'disabled' : ''}`} onClick={handleLogin} disabled={isFetching}>Sign In</button>
                     <span>New to Netflix?
                         <Link to="/register" className='link registerLink'> Sign up now</Link>
                     </span>
